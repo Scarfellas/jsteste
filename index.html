@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro de Atividades</title>
+  <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+
+  <!-- TELA INICIAL -->
+  <div class="container" id="main-screen">
+    <h1>Parte Diária Eletrônica</h1>
+    <div class="actions">
+      <button id="btn-viagem" class="primary">Registrar Viagem</button>
+      <button id="btn-outros" class="ghost" title="(Opcional) implementar depois">Outras Paradas</button>
+    </div>
+  </div>
+
+  <!-- TELA SELEÇÃO -->
+  <div class="container hidden" id="viagem-screen">
+    <h2>Selecionar Origem</h2>
+    <select id="origem-select" aria-label="Origem">
+      <option value="">Selecione uma origem</option>
+      <option value="Origem 1">Origem 1</option>
+      <option value="Origem 2">Origem 2</option>
+      <option value="Origem 3">Origem 3</option>
+    </select>
+
+    <h2>Selecionar Destino</h2>
+    <select id="destino-select" aria-label="Destino">
+      <option value="">Selecione um destino</option>
+      <option value="Destino 1">Destino 1</option>
+      <option value="Destino 2">Destino 2</option>
+      <option value="Destino 3">Destino 3</option>
+    </select>
+
+    <div>
+      <button id="btn-confirmar" class="primary">Confirmar</button>
+      <button id="btn-voltar" class="primary">Voltar</button>
+    </div>
+  </div>
+
+  <!-- TELA TIMER -->
+  <div class="container hidden" id="timer-screen">
+    <h2>Viagem em andamento de <span id="origem-nome"></span> para <span id="destino-nome"></span></h2>
+    <p class="timer-line">Tempo decorrido: <span id="timer">00:00:00</span></p>
+    <button id="btn-finalizar" class="danger">Finalizar</button>
+  </div>
+
+  <!-- TELA RESUMO -->
+  <div class="container hidden" id="resumo-screen">
+    <h2>Viagem Finalizada</h2>
+    <p>Origem: <span id="resumo-origem"></span></p>
+    <p>Destino: <span id="resumo-destino"></span></p>
+    <p>Tempo gasto: <span id="resumo-tempo"></span></p>
+    <button class="ghost" onclick="window.location.reload()">Voltar ao Início</button>
+  </div>
+
+  <!-- BOTÃO VOLTAR -->
+  <button id="btn-voltar" class="floating hidden" aria-label="Voltar">Voltar</button>
+
+  <!-- MODAL DMT -->
+  <div class="modal hidden" id="dmt-modal" role="dialog" aria-modal="true" aria-labelledby="dmt-title">
+    <div class="modal-content">
+      <button id="btn-dmt-fechar" class="modal-close" aria-label="Fechar">✖</button>
+      <h3 id="dmt-title">Informe o DMT (0.0 a 10.0)</h3>
+      <input
+        type="number"
+        id="dmt-input"
+        step="0.1"
+        min="0"
+        max="10"
+        placeholder="Ex: 7.5"
+        inputmode="decimal"
+        aria-label="Valor DMT"
+      />
+      <div class="modal-actions">
+        <button id="btn-dmt-confirmar" class="primary">Confirmar</button>
+        <button id="btn-dmt-cancelar" class="ghost">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
