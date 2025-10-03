@@ -11,13 +11,9 @@
   --shadow: 0 10px 25px rgba(0,0,0,.07);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html, body {
-  height: 100%;
-}
+html, body { height: 100%; }
 
 body {
   margin: 0;
@@ -41,29 +37,13 @@ body {
   text-align: center;
 }
 
-.hidden {
-  display: none !important;
-}
+.hidden { display: none !important; }
 
 /* Typography */
-h1, h2 {
-  margin: 0 0 14px;
-}
-
-h1 {
-  font-size: 28px;
-  font-weight: 700;
-}
-
-h2 {
-  font-size: 22px;
-  font-weight: 700;
-}
-
-p {
-  margin: 8px 0;
-  color: var(--text);
-}
+h1, h2 { margin: 0 0 14px; }
+h1 { font-size: 28px; font-weight: 700; }
+h2 { font-size: 22px; font-weight: 700; }
+p { margin: 8px 0; color: var(--text); }
 
 /* Actions / Buttons */
 .actions {
@@ -83,38 +63,18 @@ button {
   transition: transform .05s ease, filter .15s ease, background .15s ease, box-shadow .15s ease;
 }
 
-button:active {
-  transform: translateY(1px);
-}
+button:active { transform: translateY(1px); }
 
-.primary {
-  background: var(--primary);
-  color: #fff;
-}
+.primary { background: var(--primary); color: #fff; }
+.primary:hover { background: var(--primary-600); }
 
-.primary:hover {
-  background: var(--primary-600);
-}
+.ghost { background: #e5e7eb; color: #111827; }
+.ghost:hover { filter: brightness(.95); }
 
-.ghost {
-  background: #e5e7eb;
-  color: #111827;
-}
+.danger { background: var(--danger); color: #fff; }
+.danger:hover { background: var(--danger-600); }
 
-.ghost:hover {
-  filter: brightness(.95);
-}
-
-.danger {
-  background: var(--danger);
-  color: #fff;
-}
-
-.danger:hover {
-  background: var(--danger-600);
-}
-
-/* Inputs (select, number, text) — todos iguais */
+/* Inputs iguais */
 select,
 input[type="number"],
 input[type="text"] {
@@ -143,11 +103,7 @@ input[type="text"]:focus-visible {
   box-shadow: 0 0 0 4px var(--ring);
 }
 
-/* Placeholder */
-input::placeholder {
-  color: var(--muted);
-  opacity: .9;
-}
+input::placeholder { color: var(--muted); opacity: .9; }
 
 /* Timer line */
 .timer-line {
@@ -168,7 +124,7 @@ input::placeholder {
   z-index: 20;
 }
 
-/* Modal DMT */
+/* Modal base */
 .modal {
   position: fixed;
   inset: 0;
@@ -208,6 +164,30 @@ input::placeholder {
   transition: color 0.2s ease;
 }
 
-.modal-close:hover {
-  color: var(--danger);
+.modal-close:hover { color: var(--danger); }
+
+/* Lista de paradas */
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  justify-items: center;
+  margin: 10px 0 4px;
 }
+
+.list-item {
+  width: 100%;
+  max-width: 240px;
+  background: #f3f4f6;
+  color: #111827;
+  border-radius: 12px;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+}
+
+.list-item:hover {
+  filter: brightness(.98);
+  border-color: #d1d5db;
+}
+
+.mt8 { margin-top: 8px; }

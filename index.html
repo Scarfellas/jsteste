@@ -13,13 +13,12 @@
     <h1>Parte Diária Eletrônica</h1>
     <div class="actions">
       <button id="btn-viagem" class="primary">Registrar Viagem</button>
-      <button id="btn-outros" class="ghost" title="(Opcional) implementar depois">Outras Paradas</button>
+      <button id="btn-outros" class="ghost" title="Registrar outras paradas">Outras Paradas</button>
     </div>
   </div>
 
-  <!-- TELA SELEÇÃO -->
+  <!-- TELA SELEÇÃO DE VIAGEM -->
   <div class="container hidden" id="viagem-screen">
-
     <h2>Indique o Motorista</h2>
     <input
       type="text"
@@ -27,7 +26,7 @@
       maxlength="30"
       placeholder="Nome ou até 6 números"
       aria-label="Motorista"
-/>
+    />
 
     <h2>Selecionar Origem</h2>
     <select id="origem-select" aria-label="Origem">
@@ -47,18 +46,39 @@
 
     <div>
       <button id="btn-confirmar" class="primary">Confirmar</button>
-      <button id="btn-voltar" class="primary">Voltar</button>
+      <!-- BOTÃO VOLTAR ESPECÍFICO DESTA TELA -->
+      <button id="btn-viagem-voltar" class="ghost">Voltar</button>
     </div>
   </div>
 
-  <!-- TELA TIMER -->
+  <!-- TELA OUTRAS PARADAS -->
+  <div class="container hidden" id="outros-screen">
+    <h2>Selecionar Parada</h2>
+    <div class="list" id="lista-paradas">
+      <button class="list-item" data-parada="Abastecimento">⛽ Abastecimento</button>
+      <button class="list-item" data-parada="Manutenção">🔧 Manutenção</button>
+      <button class="list-item" data-parada="Pausa">⏱️ Pausa</button>
+      <button class="list-item" data-parada="Almoço">🍽️ Almoço</button>
+      <button class="list-item" data-parada="Outro Serviço">🧰 Outro Serviço</button>
+    </div>
+    <div class="mt8">
+      <!-- BOTÃO VOLTAR ESPECÍFICO DESTA TELA -->
+      <button id="btn-outros-voltar" class="ghost">Voltar</button>
+    </div>
+  </div>
+
+  <!-- TELA TIMER (COMPARTILHADA ENTRE VIAGEM E PARADA) -->
   <div class="container hidden" id="timer-screen">
-    <h2>Viagem em andamento de <span id="origem-nome"></span> para <span id="destino-nome"></span></h2>
+    <!-- título para viagens -->
+    <h2 id="viagem-titulo">Viagem em andamento de <span id="origem-nome"></span> para <span id="destino-nome"></span></h2>
+    <!-- título para paradas -->
+    <h2 id="parada-titulo" class="hidden">Parada em andamento: <span id="parada-nome"></span></h2>
+
     <p class="timer-line">Tempo decorrido: <span id="timer">00:00:00</span></p>
     <button id="btn-finalizar" class="danger">Finalizar</button>
   </div>
 
-  <!-- TELA RESUMO -->
+  <!-- TELA RESUMO VIAGEM -->
   <div class="container hidden" id="resumo-screen">
     <h2>Viagem Finalizada</h2>
     <p>Motorista: <span id="resumo-motorista"></span></p>
@@ -68,7 +88,15 @@
     <button class="ghost" onclick="window.location.reload()">Voltar ao Início</button>
   </div>
 
-  <!-- BOTÃO VOLTAR -->
+  <!-- TELA RESUMO PARADA -->
+  <div class="container hidden" id="resumo-parada-screen">
+    <h2>Parada Finalizada</h2>
+    <p>Parada: <span id="resumo-parada-nome"></span></p>
+    <p>Tempo gasto: <span id="resumo-parada-tempo"></span></p>
+    <button class="ghost" onclick="window.location.reload()">Voltar ao Início</button>
+  </div>
+
+  <!-- BOTÃO VOLTAR FLUTUANTE (único com id btn-voltar) -->
   <button id="btn-voltar" class="floating hidden" aria-label="Voltar">Voltar</button>
 
   <!-- MODAL DMT -->
@@ -89,6 +117,18 @@
       <div class="modal-actions">
         <button id="btn-dmt-confirmar" class="primary">Confirmar</button>
         <button id="btn-dmt-cancelar" class="ghost">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CONFIRMAÇÃO FINALIZAR -->
+  <div class="modal hidden" id="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <div class="modal-content">
+      <h3 id="confirm-title">Confirmar Finalização</h3>
+      <p id="confirm-text">Deseja finalizar agora?</p>
+      <div class="modal-actions">
+        <button id="btn-confirm-yes" class="primary">Sim</button>
+        <button id="btn-confirm-no" class="ghost">Não</button>
       </div>
     </div>
   </div>
