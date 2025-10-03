@@ -19,6 +19,16 @@
 
   <!-- TELA SELEÇÃO -->
   <div class="container hidden" id="viagem-screen">
+
+    <h2>Indique o Motorista</h2>
+    <input
+      type="text"
+      id="motorista-input"
+      maxlength="30"
+      placeholder="Nome ou até 6 números"
+      aria-label="Motorista"
+/>
+
     <h2>Selecionar Origem</h2>
     <select id="origem-select" aria-label="Origem">
       <option value="">Selecione uma origem</option>
@@ -53,6 +63,7 @@
     <h2>Viagem Finalizada</h2>
     <p>Origem: <span id="resumo-origem"></span></p>
     <p>Destino: <span id="resumo-destino"></span></p>
+    <p>Motorista: <span id="resumo-motorista"></span></p>
     <p>Tempo gasto: <span id="resumo-tempo"></span></p>
     <button class="ghost" onclick="window.location.reload()">Voltar ao Início</button>
   </div>

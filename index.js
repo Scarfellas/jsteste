@@ -4,6 +4,7 @@ const btnFinalizar = document.getElementById('btn-finalizar');
 const origemSelect = document.getElementById('origem-select');
 const destinoSelect = document.getElementById('destino-select');
 const btnVoltar = document.getElementById('btn-voltar');
+const motoristaInput = document.getElementById('motorista-input');
 
 const mainScreen = document.getElementById('main-screen');
 const viagemScreen = document.getElementById('viagem-screen');
@@ -23,6 +24,7 @@ const btnDmtCancelar = document.getElementById('btn-dmt-cancelar');
 const btnDmtFechar = document.getElementById('btn-dmt-fechar');
 const dmtInput = document.getElementById('dmt-input');
 const dmtModal = document.getElementById('dmt-modal');
+
 
 // Variáveis de controle
 let timerInterval;
@@ -54,6 +56,14 @@ btnViagem.onclick = () => {
 btnConfirmar.onclick = () => {
   const origem = origemSelect.value;
   const destino = destinoSelect.value;
+  const motorista = motoristaInput.value.trim();
+  const isOnlyNumbers = /^\d{1,6}$/.test(motorista);
+  const isName = /^[a-zA-ZÀ-ÿ\s]{2,}$/.test(motorista);
+  document.getElementById('resumo-motorista').textContent = motorista;
+  if (!motorista || (!isOnlyNumbers && !isName)) {
+  alert('Por favor, insira um NOME válido ou até 6 números para o motorista.');
+  return;
+}
 
   if (!origem) {
     alert('Por favor, selecione uma ORIGEM!');
